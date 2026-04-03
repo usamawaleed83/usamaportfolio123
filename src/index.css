@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+:root {
+  --theme-bg: #fff1e6;
+  --theme-text: #000000;
+  --theme-accent: #ef8354;
+  --card-bg: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.08);
+  scroll-behavior: smooth;
+}
+
+.dark {
+  --theme-bg: #000000;
+  --theme-text: #ffffff;
+  --theme-accent: #ef8354;
+  --card-bg: #1a1c23;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+a {
+  font-weight: 500;
+  color: var(--theme-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:visited {
+  color: var(--theme-text);
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: var(--theme-accent);
+  outline: none;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--theme-text);
+  background-color: var(--theme-bg);
+  transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+section {
+  transition: all 0.5s ease-in-out;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: var(--theme-accent);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid var(--theme-accent);
+}
