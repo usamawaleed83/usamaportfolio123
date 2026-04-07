@@ -34,7 +34,7 @@ const AdminDashboard = () => {
     const fetchMessages = async () => {
         try {
             const token = localStorage.getItem('adminToken');
-            const response = await fetch('http://localhost:5000/api/admin/messages', {
+            const response = await fetch('https://usamaportfolio-production.up.railway.app/api/admin/messages', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -53,7 +53,7 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
         try {
             const token = localStorage.getItem('adminToken');
-            const response = await fetch('http://localhost:5000/api/admin/stats', {
+            const response = await fetch('https://usamaportfolio-production.up.railway.app/api/admin/stats', {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

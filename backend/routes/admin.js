@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
 // Google OAuth Routes
 router.get('/auth/google', (req, res, next) => {
     if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
-        return res.redirect('http://localhost:5174/admin?error=oauth_not_configured');
+        return res.redirect('https://usamaportfolio123.vercel.app/admin?error=oauth_not_configured');
     }
     passport.authenticate('google', { scope: ['profile', 'email'] })(req, res, next);
 });
@@ -75,9 +75,9 @@ router.get('/auth/google/callback',
                 { email: req.user.email, name: req.user.name, role: 'admin', loginType: 'google', photo: req.user.photo },
                 JWT_SECRET, { expiresIn: '24h' }
             );
-            res.redirect(`http://localhost:5174/admin/dashboard?token=${token}`);
+            res.redirect(`https://usamaportfolio123.vercel.app/admin/dashboard?token=${token}`);
         } else {
-            res.redirect('http://localhost:5174/admin?error=unauthorized');
+            res.redirect('https://usamaportfolio123.vercel.app/admin?error=unauthorized');
         }
     }
 );

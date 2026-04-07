@@ -35,7 +35,7 @@ const AdminLogin = () => {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:5000/api/admin/login', {
+            const response = await fetch('https://usamaportfolio-production.up.railway.app/api/admin/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -134,7 +134,7 @@ const AdminLogin = () => {
                         </div>
 
                         <a
-                            href="http://localhost:5000/api/admin/auth/google"
+                            href="https://usamaportfolio-production.up.railway.app/api/admin/auth/google"
                             className="w-full bg-white hover:bg-gray-50 text-gray-800 py-2.5 rounded-lg font-black text-sm flex items-center justify-center gap-2 transition-all shadow-lg border border-gray-200 hover:scale-[1.02] active:scale-95"
                         >
                             <svg className="w-4 h-4" viewBox="0 0 24 24">
