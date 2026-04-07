@@ -15,8 +15,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
-const mongoUri = process.env.MONGODB_URI;
-mongoose.connect(mongoUri)
+mongoose.connect(process.env.MONGODB_URI, {
+    serverSelectionTimeoutMS: 30000,
+    socketTimeoutMS: 45000,
+})
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch(err => console.error('MongoDB connection error:', err));
 
