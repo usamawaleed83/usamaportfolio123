@@ -50,8 +50,8 @@ router.post('/', async (req, res) => {
         res.status(200).json({ success: true, message: 'Message received successfully!' });
 
     } catch (error) {
-        console.error('Contact form error:', error);
-        res.status(500).json({ success: false, message: 'Failed to send message' });
+        console.error('Contact form error:', error.message, error.stack);
+        res.status(500).json({ success: false, message: 'Failed to send message', error: error.message });
     }
 });
 
