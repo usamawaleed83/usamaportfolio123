@@ -15,14 +15,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
-const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://usamawaleed83_db_user:32mmwASPFiy0C7uI@cluster0.p1rlbg6.mongodb.net/portfolio';
+const mongoUri = process.env.MONGODB_URI;
 mongoose.connect(mongoUri)
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch(err => console.error('MongoDB connection error:', err));
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'https://usamaportfolio123.vercel.app'],
+    origin: ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'https://usamaportfolio123.vercel.app', 'https://usamaportfolio-production.up.railway.app'],
     credentials: true
 }));
 app.use(express.json());
