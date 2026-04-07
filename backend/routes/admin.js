@@ -14,7 +14,8 @@ const authorizedEmails = ['usamaq530@gmail.com', 'usamawaleed83@gmail.com'];
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
-// Google OAuth Strategy
+// Google OAuth Strategy (only if credentials are configured)
+if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -27,6 +28,7 @@ passport.use(new GoogleStrategy({
         return done(null, false, { message: 'Unauthorized email' });
     }
 }));
+}
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));
