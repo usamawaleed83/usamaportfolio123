@@ -21,7 +21,7 @@ const Projects = () => {
         { 
             title: 'Super Admin Dashboard', 
             category: 'Dashboard', 
-            image: '/Capture.JPG',
+            image: '/nX7Ao.jpg',
             description: 'Comprehensive admin panel with full system control and analytics',
             technologies: ['React', 'TypeScript', 'Chart.js', 'Material-UI']
         },
