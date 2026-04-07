@@ -23,7 +23,7 @@ const Contact = () => {
         setSubmitStatus('');
 
         try {
-            const response = await fetch('https://usamaportfolio-production.up.railway.app/api/contact', {
+            const response = await fetch('https://usamaportfolio-backend-production.up.railway.app/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
