@@ -5,6 +5,7 @@ import { useTheme } from '../../context/ThemeContext';
 const Navbar = () => {
   const { isDarkMode, setTheme } = useTheme();
   const [showThemeModal, setShowThemeModal] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isResumePage = location.pathname === '/resume';
   const isAchievementsPage = location.pathname === '/achievements';
@@ -28,7 +29,27 @@ const Navbar = () => {
             </a>
           )}
 
-          {/* Links */}
+          {/* Mobile Menu Toggle & Actions */}
+          <div className="flex lg:hidden items-center gap-4">
+            <button
+              onClick={() => setShowThemeModal(true)}
+              className="p-2.5 rounded-xl bg-white dark:bg-black border border-gray-200 dark:border-inherit text-[#ef8354] transition-all shadow-sm active:scale-95"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </button>
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-[var(--theme-text)] p-2 hover:text-[#ef8354] transition-colors"
+            >
+              {isMobileMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+              )}
+            </button>
+          </div>
+
+          {/* Desktop Links */}
           <div className="hidden lg:flex items-center gap-12">
             <ul className="flex gap-10 text-[var(--theme-text)] text-sm md:text-base font-bold uppercase tracking-widest">
               {isOnSubPage ? (
@@ -68,6 +89,47 @@ const Navbar = () => {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        <div 
+          className={`lg:hidden w-full bg-[var(--theme-bg)] border-b border-[var(--border-color)] transition-all duration-300 ease-in-out overflow-hidden shadow-xl ${
+            isMobileMenuOpen ? 'max-h-[500px] opacity-100 pb-6' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <ul className="flex flex-col px-8 gap-5 text-[var(--theme-text)] text-sm font-bold uppercase tracking-widest mt-2">
+            {isOnSubPage ? (
+              <>
+                <li><Link to="/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-[#ef8354] transition-all">Home</Link></li>
+                <li><Link to="/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-[#ef8354] transition-all">About</Link></li>
+                <li><Link to="/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-[#ef8354] transition-all">Projects</Link></li>
+                <li><Link to="/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('blogs')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-[#ef8354] transition-all">Blogs</Link></li>
+                <li><Link to="/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('achievements')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-[#ef8354] transition-all">Achievements</Link></li>
+                <li><Link to="/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="hover:text-[#ef8354] transition-all">Contact</Link></li>
+                <li className="pt-4 border-t border-gray-200 dark:border-white/10">
+                  <a href="/admin" onClick={() => setIsMobileMenuOpen(false)} className="inline-flex w-full py-3 px-6 rounded-2xl bg-white dark:bg-black border border-gray-200 dark:border-white/10 items-center justify-center gap-3 text-xs font-black uppercase tracking-widest shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#ef8354]"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                    <span className="text-gray-900 dark:text-white">Login as Admin</span>
+                  </a>
+                </li>
+              </>
+            ) : (
+              <>
+                <li><a href="#home" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#ef8354] transition-all">Home</a></li>
+                <li><a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#ef8354] transition-all">About</a></li>
+                <li><a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#ef8354] transition-all">Projects</a></li>
+                <li><a href="#blogs" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#ef8354] transition-all">Blogs</a></li>
+                <li><a href="#achievements" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#ef8354] transition-all">Achievements</a></li>
+                <li><a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#ef8354] transition-all">Contact</a></li>
+                <li className="pt-4 border-t border-gray-200 dark:border-white/10">
+                  <a href="/admin" onClick={() => setIsMobileMenuOpen(false)} className="inline-flex w-full py-3 px-6 rounded-2xl bg-white dark:bg-black border border-gray-200 dark:border-white/10 items-center justify-center gap-3 text-xs font-black uppercase tracking-widest shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#ef8354]"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                    <span className="text-gray-900 dark:text-white">Login as Admin</span>
+                  </a>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
       </nav>
 
