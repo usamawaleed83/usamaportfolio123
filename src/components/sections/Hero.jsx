@@ -72,8 +72,8 @@ const Hero = () => {
           {/* Action Buttons - Matching SS shape */}
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
             <a
-              href="/usama cv.pdf"
-              download="Usama_CV.pdf"
+              href="/Usama_Waleed_CV.pdf"
+              download="Usama_Waleed_CV.pdf"
               className="bg-[#ef8354] text-white px-8 py-3 rounded-xl font-bold text-base hover:bg-[#d86a3d] hover:scale-105 transition-all shadow-xl shadow-[#ef8354]/20 active:scale-95"
             >
               Download CV

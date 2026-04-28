@@ -549,8 +549,8 @@ const Resume = () => {
                 {/* Download CV Button */}
                 <div className="text-center">
                     <a
-                        href="/usama cv.pdf"
-                        download="Usama_CV.pdf"
+                        href="/Usama_Waleed_CV.pdf"
+                        download="Usama_Waleed_CV.pdf"
                         className="inline-flex items-center gap-3 bg-gradient-to-r from-[#ef8354] to-[#ef8354]/80 hover:from-[#ef8354]/90 hover:to-[#ef8354] text-white px-12 py-5 rounded-2xl font-bold text-xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl group"
                     >
                         <svg className="w-6 h-6 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
